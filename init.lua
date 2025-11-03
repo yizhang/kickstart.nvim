@@ -91,7 +91,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
-vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
@@ -102,7 +102,7 @@ vim.g.have_nerd_font = false
 vim.o.number = true
 -- You can also add relative line numbers, to help with jumping.
 --  Experiment for yourself to see if you like it!
--- vim.o.relativenumber = true
+vim.o.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.o.mouse = 'a'
@@ -934,8 +934,29 @@ require('lazy').setup({
         return '%2l:%-2v'
       end
 
-      -- ... and there is more!
-      --  Check out: https://github.com/echasnovski/mini.nvim
+      require('mini.pick').setup()
+      require('mini.extra').setup()
+      -- require("mini.jump").setup()
+      require('mini.tabline').setup()
+      require('mini.starter').setup()
+      require('mini.notify').setup()
+      require('mini.move').setup()
+      require('mini.indentscope').setup()
+
+      local files = require 'mini.files'
+      files.setup {
+        options = {
+          use_as_default_explorer = true,
+        },
+        windows = {
+          preview = true,
+        },
+      }
+      vim.keymap.set('n', '-', files.open)
+
+      vim.keymap.set('n', '<Leader>b', function()
+        require('mini.pick').builtin.buffers()
+      end, { desc = 'Pick Buffer' })
     end,
   },
   { -- Highlight, edit, and navigate code
