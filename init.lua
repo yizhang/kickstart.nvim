@@ -963,7 +963,7 @@ require('lazy').setup({
     main = 'nvim-treesitter.configs', -- Sets main module to use for opts
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
     opts = {
-      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' },
+      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc', 'typst', 'yaml' },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
@@ -1026,6 +1026,21 @@ require('lazy').setup({
       }
     end,
   },
+
+  {
+    'OXY2DEV/markview.nvim',
+    lazy = false,
+    dependencies = { 'saghen/blink.cmp' },
+    config = function()
+      require('markview').setup {
+        preview = {
+          icon_provider = 'mini',
+        },
+      }
+      vim.keymap.set('n', '<leader>m', '<CMD>Markview<CR>', { desc = 'Toggle Markview' })
+    end,
+  },
+
   -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and
   -- place them in the correct locations.
