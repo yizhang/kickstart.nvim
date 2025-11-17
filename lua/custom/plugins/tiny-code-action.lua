@@ -2,13 +2,11 @@ return {
   'rachartier/tiny-code-action.nvim',
   dependencies = {
     { 'nvim-lua/plenary.nvim' },
-
-    -- optional picker via telescope
-    { 'nvim-telescope/telescope.nvim' },
   },
   event = 'LspAttach',
   opts = {
     picker = {
+      'vim.ui.select',
       -- 'buffer',
       -- opts = {
       --   hotkeys = true, -- Enable hotkeys for quick selection of actions
