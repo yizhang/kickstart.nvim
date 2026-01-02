@@ -9,7 +9,7 @@ return {
     local fzflua = require 'fzf-lua'
     fzflua.register_ui_select()
     fzflua.setup {
-      { 'fzf-native', 'hide' },
+      { 'ivy', 'hide' },
     }
     vim.keymap.set('n', '<leader>f', fzflua.files, { desc = 'Files' })
     vim.keymap.set('n', '<leader>b', fzflua.buffers, { desc = 'Buffers' })
